@@ -1,17 +1,17 @@
 const prompt = require ( 'prompt-sync' ) ( { sigint : true } ) ; 
 
-let numberOfFilms = userQuestions("num", "сколько фильмов вы посмотрели ?");
+
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: "",
     movies: {},
     actors: {},
     genres: [],
-    privat: true
+    privat: false
 };
 
 
 function userQuestions(type, question) {
-    let tempQuestion = prompt(question);
+    let tempQuestion = prompt(question).trim();
 
     if(tempQuestion != null && tempQuestion != "" && tempQuestion != " "){  // первичная валидация 
 
@@ -42,11 +42,38 @@ function userQuestions(type, question) {
 }
 
 
-for(let i = 1; i < 3; i++){
-    const tempFilm = userQuestions("str", "Вспомните один из последних просмотреных фильмов:  ");
-    const tempRating = userQuestions("num", "На сколько оцените его?");
-    personalMovieDB.movies[tempFilm] = tempRating;
+function start(dataBase) {
+    userQuestions("str", "Здравствуйте, если готовы начать введите << yes >> ") === "yes" ? console.log("хорошо давайте начнем.") : start();
+    let numberOfFilms = userQuestions("num", "сколько фильмов вы посмотрели ?");
+    dataBase.count = numberOfFilms;
 }
-console.log(personalMovieDB.count)
-console.log(personalMovieDB.movies)
 
+
+function writeYourFavoriteFilms(dataBase) {
+    for(let i = 1; i < 3; i++){
+        const tempFilm = userQuestions("str", "Вспомните один из последних просмотреных фильмов:  ");
+        const tempRating = userQuestions("num", "На сколько оцените его?");
+        dataBase.movies[tempFilm] = tempRating;
+    }
+}
+
+
+function writeYourFavoriteGenres(dataBase) {
+    for(let i = 1; i < 4; i++){
+    const tempGenres = userQuestions("str", "Ваш любимый жанр ?")
+        dataBase.genres[i-1] = tempGenres
+    }
+}
+
+
+function showMyDB(dataBase){
+    dataBase.privat === false ? console.log(dataBase) : console.log("у вас нет доступа")
+}
+
+
+start(personalMovieDB);
+writeYourFavoriteFilms(personalMovieDB);
+writeYourFavoriteGenres(personalMovieDB);
+showMyDB(personalMovieDB);
+
+console.log(Math.ceil(8 / 4))

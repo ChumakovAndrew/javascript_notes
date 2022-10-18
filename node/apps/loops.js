@@ -127,3 +127,82 @@ for (let i = 0; i <= lines; i++) {
     result += "\n";
 }
 console.log(result)
+
+function sayHello(name) {
+    return `Привет ${name}`
+}
+
+console.log(sayHello('антон'))
+
+function returnNeighboringNumbers(num) {
+    if(typeof(num) === "number"){
+        return [num-1, num, num+1]
+    }else{
+        return "Error"
+    }
+}
+console.log(returnNeighboringNumbers('4'))
+
+function getMathResult(num, i) {
+    if(typeof(i) === 'number' && i > 0 && (typeof(num) === "number" || typeof(num) === "string")){
+        let tempNum = num
+        for(let a = 2; a <= i; a++){
+            tempNum += "---" + (num * a)
+        }
+        return tempNum 
+    }
+    else{
+        return num
+    }
+}
+
+console.log(getMathResult(4, 4))
+console.log(getMathResult(10, 7))
+console.log(getMathResult("2", '2'))
+console.log(getMathResult("2", 4))
+
+
+
+
+function getTimeFromMinutes(minutes) {
+    if(typeof(minutes) !== "number" || minutes < 0){
+        return "Ошибка, проверьте данные"
+    }
+    else{
+        if( minutes > 60){
+            let hour = Math.trunc(minutes / 60)
+            let min = minutes % 60
+
+            if(hour === 1){
+                hour = hour + " час " 
+            }
+            else if(hour > 1 && hour <= 4 ){
+                hour = hour + " часа "
+            }
+            else {
+                hour = hour + " часов "
+            }
+
+
+            if(min === 1){
+                min = min + " минута " 
+            }
+            else if(min > 1 && hour <= 4 ){
+                min = min + " минуты "
+            }
+            else {
+                min = min + " минут "
+            }
+
+            return hour + min
+
+        }
+        else {
+            return minutes + " минут"
+        }
+
+    }
+
+}
+
+console.log(getTimeFromMinutes(248))
