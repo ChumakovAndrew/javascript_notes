@@ -29,18 +29,3 @@ const str = 'Values: ';
 str.concat(42, ' ', null);
 // 'Values: 42 null'
 
-let name = "Anderw";
-
-console.log(`hello ${name}`)
-
-for(let i= 100; i > 0; i++){
-    console.log(`number ${i}`)
-}
-
-let number = 5
-
-if(number != 0 || number < 3 ){
-    console.log("ваше число прошло проверку")
-}else {
-    console.log("ваше число не подходит")
-}

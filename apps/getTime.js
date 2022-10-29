@@ -59,27 +59,7 @@ function startApp(){
 
 startApp()
 
-function fib(iter) {
 
-    if(typeof(iter) !== "number" || iter === 0 || !Number.isInteger(iter)){
-        return ""
-    }
-    else if(iter === 1){
-        return "0"
-    }
-    
-    let finishNum = "0 1" 
-    let firstNum = 0
-    let secondNum = 1
-    for(let i = 1; i < iter - 1; i++) {
-        let temp = firstNum + secondNum
 
-        finishNum +=  " " + (firstNum + secondNum)
-        firstNum = secondNum
-        secondNum = temp
-    }
-    return finishNum
 
-}
 
-console.log(fib(10))
