@@ -76,6 +76,8 @@ console.log(reverse(someString, ' '))
 
 // #############################################
 
+// #############################################
+// задачка с udemy
 const shoppingMallData = {
     shops: [
         {
@@ -99,7 +101,7 @@ const shoppingMallData = {
     moneyPer1m3: 30,
     budget: 50000
 }
-// задачка с udemy
+
 function isBudgetEnough(data) {  // расчитывает хватает бюджета или нет 
     let {height,moneyPer1m3,budget,shops} = data
     let square = 0
@@ -118,6 +120,31 @@ function isBudgetEnough(data) {  // расчитывает хватает бюд
 
 console.log(isBudgetEnough(shoppingMallData))
 
+// #############################################
+
+// #############################################
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi',];
+
+function sortStudentsByGroups(arr) { // подумать еще
+    let arrSort = arr.sort()
+    let obj = []
+    let a = 0, 
+        b = 3
+    for(let i = 0; i <= Math.floor(arr.length/3); i++){
+       obj[i] = arrSort.slice(a, b)
+       a = b
+       b = b + 3
+    }
+    if(obj[obj.length - 1].length < 3 && obj[obj.length - 1].length > 0){
+        console.log(obj[obj.length - 1].length)
+        obj[obj.length - 1] = 'Оставшиеся студенты: ' + obj[obj.length - 1].join(', ')
+    }
+    return obj
+   
+
+}
+console.log(sortStudentsByGroups(students))
 // #############################################
 
 
