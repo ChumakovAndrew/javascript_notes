@@ -51,7 +51,7 @@ function fib(iter) {    // задача на получение чисел Фи�
 
 }
 
-console.log(fib(10))
+console.log(fib(5))
 
 // #############################################
 
@@ -73,6 +73,50 @@ function reverse(str, a) {  // задача на реверс строки
 
 
 console.log(reverse(someString, ' '))
+
+// #############################################
+
+const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        }
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+}
+// задачка с udemy
+function isBudgetEnough(data) {  // расчитывает хватает бюджета или нет 
+    let {height,moneyPer1m3,budget,shops} = data
+    let square = 0
+    shops.forEach(element => {
+        square += element.width * element.length
+    });
+    let volume = square * height
+    let actualBudget = volume * moneyPer1m3
+    if(budget >= actualBudget){
+        return 'Бюджета достаточно'
+    }
+    else{
+        return 'Бюджета недостаточно'
+    }
+}
+
+console.log(isBudgetEnough(shoppingMallData))
 
 // #############################################
 
